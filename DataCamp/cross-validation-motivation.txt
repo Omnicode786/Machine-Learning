@@ -1,0 +1,105 @@
+cross validation motivation
+
+
+there is a pitfall in learning
+
+if we are computing r squared on our test set
+the r squared returned is dependatn on the wat we split up the data
+
+
+not representative of model ability to generalize to unseen data
+solution is cross-validation
+
+
+we split the data into 5 folds
+
+these folds are random splits of the test set into 5 or 4
+
+we do these till 5 splits
+
+on the first we take first fold as our test set
+and fit on the other folds
+then compute the metric of our r squred result
+or any other for that matter
+
+then similarly for split 2 fold 2 is test and others are train to fit the model
+
+n fold cross validation
+n vold cv
+
+more folds = more computation
+
+
+from sklearn.model_selection cross_val_Score, k fold
+
+set shuffle - trye for k fold and n splits will be k
+
+
+the length of the results is the no of folds
+for example here it will be 6
+
+
+we can callc the  mean the std standard daviation 
+and 95% percentile using the quantile 
+
+
+
+
+
+fitting a linear regression model minimises a loss function
+
+it choses a coeff a for each feature var plus be
+
+regulation
+if these coeffs are very large then we have over fittingso we panlzie the large co effs
+
+you have already done it you beast muzammil
+
+
+Loff function = ols loss function + aplha * nEi=1 aplhai^2
+
+when minimizign theloss func the ridghe penalizes the large ot negative co effs
+a = paramete we need to choose picking a pkha issimilar topicking k in knn hyper parameter  = variable used to optimize the model paramters
+
+apkha controls model complexity 
+
+aplha = O = O:S (caln lead to over fitting)
+very high = can lead to undefitting
+
+
+
+for rifge regession import Ridge from linear_model
+
+for aplha in values
+
+rifhe = rifge(aplha=plha)
+rihgt fittingso
+
+# Import Ridge
+from sklearn.linear_model import Ridge
+alphas = [0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0]
+ridge_scores = []
+for alpha in alphas:
+  
+  # Create a Ridge regression model
+  ridge = Ridge(alpha =alpha)
+  
+  # Fit the data
+  ridge.fit(X_train, y_train)
+  
+  # Obtain R-squared
+  score = ridge.score(X_test, y_test)
+  ridge_scores.append(score)
+print(ridge_scores)
+
+the performacengets worse as aplha oncreases
+
+there is also lasso regression
+
+very similar code
+
+lasso can select improtant feature of a data set the
+
+this lasso func shrinks the coeffs of the less imp features to - 
+
+features notshruk to 0 are selected by the lasso regression
